@@ -39,7 +39,7 @@ export default function Agent1ExecutionPage() {
           if (res.recommendation?.combination_plan) {
             setPlan(res.recommendation.combination_plan);
             const initialStatuses: any = {};
-            res.recommendation.combination_plan.forEach((_, i) => initialStatuses[i] = 'pending');
+            res.recommendation.combination_plan.forEach((_: CombinationStep, i: number) => initialStatuses[i] = 'pending');
             setStepStatuses(initialStatuses);
           }
           setLoading(false);
