@@ -184,7 +184,7 @@ export default function Agent3Page() {
                         </tr>
                       </thead>
                       <tbody className="bg-white divide-y divide-gray-200">
-                        {data.preview.map((row, idx) => (
+                        {data.preview.map((row: Record<string, unknown>, idx: number) => (
                           <tr key={idx} className="hover:bg-gray-50 transition-colors">
                             {Object.values(row).map((val: any, colIdx) => (
                               <td key={colIdx} className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
