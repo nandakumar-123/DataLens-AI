@@ -1,0 +1,80 @@
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Python Virtual Environments
+venv/
+.venv/
+*/venv/
+*/.venv/
+backend/venv/
+backend/.venv/
+env/
+.Python
+
+# Python caches and bytecode
+__pycache__/
+*/__pycache__/
+backend/app/**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+*/.pytest_cache/
+
+# Python packaging & builds
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Trained ML models and temporary weights
+backend/models/
+backend/models/*
+*.pkl
+*.joblib
+*.onnx
+
+# SQLite databases & temp data files
+*.sqlite3
+*.db
+datalens.db
+backend/datalens.db
+backend/data/*
+!backend/data/.gitkeep
+data/*
+!data/.gitkeep
+
+# Presentation working files / large slide decks
+*.pptx
+*.pdf
+
+# Next.js / Node
+node_modules/
+*/node_modules/
+.next/
+*/.next/
+out/
+tsconfig.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp.*
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
