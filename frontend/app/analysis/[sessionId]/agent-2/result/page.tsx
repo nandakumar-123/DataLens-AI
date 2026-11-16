@@ -181,7 +181,7 @@ export default function Agent2ResultPage() {
         <div>
           <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Cleaning Attempt History</h3>
           <div className="flex flex-wrap gap-4">
-            {data.history.map((h, i) => (
+            {data.history.map((h: { attempt: number; old_score: number; new_score: number }, i: number) => (
               <div key={i} className="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-lg border border-gray-200">
                 <span className="text-xs font-bold text-gray-400">Attempt {h.attempt}</span>
                 <span className="text-sm font-semibold">{h.old_score}</span>
