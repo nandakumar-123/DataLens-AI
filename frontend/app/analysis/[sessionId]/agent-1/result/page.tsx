@@ -110,7 +110,7 @@ export default function Agent1ResultPage() {
                   </svg>
                 </div>
                 <p className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Total Rows</p>
-                <h4 className="font-bold text-gray-900 text-3xl group-hover:text-green-600 transition-colors">{data.rows.toLocaleString()}</h4>
+                <h4 className="font-bold text-gray-900 text-3xl group-hover:text-green-600 transition-colors">{(data.rows ?? 0).toLocaleString()}</h4>
               </CardContent>
             </Card>
 
@@ -123,7 +123,7 @@ export default function Agent1ResultPage() {
                   </svg>
                 </div>
                 <p className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">Total Columns</p>
-                <h4 className="font-bold text-gray-900 text-3xl group-hover:text-blue-600 transition-colors">{data.columns.toLocaleString()}</h4>
+                <h4 className="font-bold text-gray-900 text-3xl group-hover:text-blue-600 transition-colors">{(data.columns ?? 0).toLocaleString()}</h4>
               </CardContent>
             </Card>
           </div>
