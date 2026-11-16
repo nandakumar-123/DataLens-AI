@@ -82,7 +82,7 @@ export default function Agent6Page({ params }: { params: Promise<{ sessionId: st
       setProgressText("Human Configuration Approved");
       await new Promise(r => setTimeout(r, 600));
       
-      const res = await analysisApi.setAgent6Config(sessionId, t, f);
+      const res = await analysisApi.setAgent6Config(sessionId, t ?? "", f);
       
       setProgress(60);
       setProgressText("Preprocessing Prepared");
