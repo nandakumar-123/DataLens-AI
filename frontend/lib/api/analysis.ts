@@ -1,14 +1,14 @@
 import { apiRequest, apiUrl } from "./client";
 
-export type CleanDecisions = { duplicates?: string; missing?: Record<string, string>; outliers?: Record<string, string> };
+export type CleanDecisions = { duplicates: string; missing: Record<string, string>; outliers: Record<string, string> };
 export type CombinationStep = { right_dataset: string; left_key: string; right_key: string; type?: string; [key: string]: any };
 export type Agent1ProfileResponse = { session_id?: string; status?: string; profiles?: any[]; relationships?: any[]; recommendation?: any; [key: string]: any };
 export type Agent1ResultResponse = { status?: string; datasets_combined?: number; filename?: string; rows?: number; columns?: number; [key: string]: any };
 export type Agent2AnalyzeResponse = { score: number; attempts: number; report?: any; recommendations?: any; [key: string]: any };
-export type Agent2ResultResponse = { [key: string]: any };
-export type Agent3ValidationResponse = { [key: string]: any };
-export type Agent6State = { [key: string]: any };
-export type Agent7RecommendResponse = { ai_recommended_models: string[]; [key: string]: any };
+export type Agent2ResultResponse = { history: Array<{ attempt: number; old_score: number; new_score: number }>; [key: string]: any };
+export type Agent3ValidationResponse = { preview: Array<Record<string, unknown>>; [key: string]: any };
+export type Agent4AnalyzeResponse = { descriptive: Array<{ column: string; count: number; mean: number | null; median: number | null; std: number | null; min: number | null; max: number | null; skewness: number | null }>; correlations: { z: number[][]; x: string[]; y: string[]; strongest_positive: Array<{ feature_a: string; feature_b: string; correlation: number }>; strongest_negative: Array<{ feature_a: string; feature_b: string; correlation: number }> }; hypothesis_tests: Array<{ significant: boolean; test_name: string; variables: string; groups: string; p_value: number; interpretation: string }>; [key: string]: any };\nexport type Agent6State = { [key: string]: any };
+export type Agent7RecommendResponse = { ai_recommended_models: Array<{ name: string; reason: string }>; compatible_models: string[]; [key: string]: any };
 export type Agent7TrainResponse = { [key: string]: any };
 export type TrainedModelResult = { [key: string]: any };
 
@@ -24,7 +24,7 @@ export const analysisApi = {
   getAgent2Result: (id: string) => apiRequest<Agent2ResultResponse>(base(id, "agent-2/result")),
   validateAgent3: (id: string) => apiRequest<Agent3ValidationResponse>(base(id, "agent-3/validate")),
   getAgent3DownloadUrl: (id: string) => apiUrl(base(id, "agent-3/download")),
-  runAgent4Analyze: (id: string) => apiRequest<any>(base(id, "agent-4/analyze"), { method: "POST" }),
+  runAgent4Analyze: (id: string) => apiRequest<Agent4AnalyzeResponse>(base(id, "agent-4/analyze"), { method: "POST" }),
   askAgent4: (id: string, question: string) => apiRequest<any>(base(id, "agent-4/ask"), { method: "POST", body: JSON.stringify({ question }) }),
   runAgent6Analyze: (id: string) => apiRequest<Agent6State>(base(id, "agent-6/analyze"), { method: "POST" }),
   setAgent6LearningType: (id: string, learning_type: string) => apiRequest<Agent6State>(base(id, "agent-6/learning-type"), { method: "POST", body: JSON.stringify({ learning_type }) }),
