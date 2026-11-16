@@ -270,7 +270,7 @@ export default function Agent1ExecutionPage() {
                           <div>
                             <label className="block text-xs font-medium text-gray-500 mb-1">Right Dataset</label>
                             <select className="w-full p-2 border rounded" value={step.right_dataset} onChange={e => updateStep(idx, 'right_dataset', e.target.value)}>
-                              {data?.profiles.map(p => <option key={p.filename} value={p.filename}>{p.filename}</option>)}
+                              {data?.profiles?.map(p => <option key={p.filename} value={p.filename}>{p.filename}</option>)}
                             </select>
                           </div>
                           <div>
